@@ -3,6 +3,7 @@
 
 import numpy as np
 from numpy import pi
+from numpy import newaxis
 
 a = np.arange(15).reshape(3,5)
 print a             #If want to run in a code must use print statement.
@@ -124,3 +125,33 @@ a.ravel()                                   # floor(a)= [-2.,-2.]
 b= a.ravel()  # Turns array into one row
 a.shape()
 b.shape()
+
+# To combine two separate arrays of same dimensions together use np.vstack or np.hstack
+a = np.floor(10*np.random.random((2,2)))
+b = np.floor(10*np.random.random((2,2)))
+np.vstack((a,b))
+
+# To combine multiple 1D arrays into a 2D array
+np.column_stack((a,b))
+a = np.array([2.,8.])
+b = np.array([4.,2.])
+a[:,newaxis] # Stacks the first two elements for each together in a column.
+np.column_stack((a[:,newaxis],b[:,newaxis])) #Combine the two arrays together column stacked. Here if you used vstack()
+# it would all be one column array of 4 rows. SEE page for stacking higher order than 2D arrays
+
+# Splitting arrays
+a= np.floor(10*np.random.random((2,12)))
+np.hsplit(a,3)  # Split array a into 3 even groups horizontally combines first and second arrays in even groups
+np.hsplit(a,(3,4))  # Split array after third column and again after the fourth column
+
+# See section about copies/views later - quite confusing now.
+
+# Cool ways to index arrays with numpy
+a = np.arange(12)**2
+i = np.array( [ 1,1,3,8,5 ] )
+a[i] # create an array based off an array of indices. For more fancy stuff see the webpage.
+
+#***** Might be useful to solve bad points problem along with np.delete!!!***
+time = np.linspace(20,145,5)
+data = np.sin(np.arange(20)).reshape(5,4)
+ind = data.argmax(axis =0) # This tells me the max value in each column.
