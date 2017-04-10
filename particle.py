@@ -17,3 +17,17 @@ class Particle(object):
         self.c = charge
         self.m = mass
         self.r = position # {'x': 0, 'y': 0, 'z': 0}
+
+    def hear_me(self):
+        myroar = self.roar + (
+            "\n My charge is: " + str(self.c) +
+            "\n My mass is: " + str(self.m) +
+            "\n My x position is: " + str(self.r['x']) +
+            "\n My y position is: " + str(self.r['y']) +
+            "\n My z position is: " + str(self.r['z']))
+        print(myroar)
+
+    # To run would need to create the instance first with
+    # import particle as p
+    # x = p.Particle(c,m,{'x': 0, 'y': 0, 'z': 0})
+    # x.hear_me()
